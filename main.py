@@ -109,6 +109,7 @@ def hand_score(hand: list):
     return sum(hand)
 
 
+
 #Git test 213
 #######################################
 # decks = create_deck(2)
