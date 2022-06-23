@@ -95,6 +95,7 @@ def draw_cards(n: int, decks: list):
 
     return drawed_cards, decks
 
+
 #Sum of hand (blackjack)
 def hand_score(hand: list):
     hand_sum = sum(hand) #handsum ftw
