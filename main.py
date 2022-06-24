@@ -86,9 +86,9 @@ def draw_cards(n: int, decks: list):
 
         drawed_cards.append(selected_card)
 
-    #Or you know be lazy and create a function that puts all generated decks into 1 big deck.
-    #But this is fun too.
-    #adding more comments
+    #Or you know be lazy and create a function that puts all 
+    #generated decks into 1 big list, but this is more fun to implement.
+
 
     
 
