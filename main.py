@@ -47,8 +47,6 @@ def draw_cards(n: int, decks: list):
     '''
 
     drawed_cards = []
-    #Number of decks is minus 1 since index 0 is for identifying if
-    #deck is infinite.
     n_decks = len(decks) - 1
     
     is_deck_infinite = None
