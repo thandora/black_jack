@@ -83,13 +83,9 @@ def draw_cards(n: int, decks: list):
 
         drawed_cards.append(selected_card)
 
-    #Or you know be lazy and create a function that puts all generated decks into 1 big deck.
-    #But this is fun too.
-
-    
-
 
     return drawed_cards, decks
+
 
 #Sum of hand (blackjack)
 def hand_score(hand: list):
