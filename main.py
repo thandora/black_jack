@@ -18,7 +18,6 @@
 ##D The computer is the dealer.
 from art import logo
 import random
-
 print(logo)
 
 #Create sets of decks. In the form of:
@@ -88,7 +87,6 @@ def draw_cards(n: int, decks: list):
 
     #Or you know be lazy and create a function that puts all generated decks into 1 big deck.
     #But this is fun too.
-    #adding more comments
 
     
 
@@ -97,9 +95,10 @@ def draw_cards(n: int, decks: list):
 
 #Sum of hand (blackjack)
 def hand_score(hand: list):
-    hand_sum = sum(hand) #handsum ftw
 
-    #Replace each A (value of 11) with a value of 1 if sum is over 21
+    hand_sum = sum(hand)
+
+    #Note that 11 can either be 1 or 11.
     for _ in range(hand.count(11)):
         if hand_sum > 21 and 11 in hand:
             hand.remove(11)
@@ -120,19 +119,62 @@ def hand_score(hand: list):
 #######################################
 continue_playing = True
 
-#Create a deck
-decks = create_deck(1) #Create 8 decks. Las Vegas style.
-xx = draw_cards(14, decks)
-print(xx)
-# while continue_playing:
-#     user_continue_choice = ""
+#Create a deck and deal
+n_of_decks = 1
+decks = create_deck(n_of_decks)
+player_cards = []
+dealer_cards = []
 
-#     while user_continue_choice not in ["y", "n"]:
-#         user_continue_choice = input("Welcome to Las Dolina! \
-# Do you want to play Black Jack? (y / n): ").lower()
+    
 
-#     if user_continue_choice == "n":
-#         break
+intro_once = True
+
+while continue_playing:
+    print(f"\n\n{decks}\n\n")
+    #Start with new hand.
+    player_cards = []
+    dealer_cards = []
+
+    user_continue_choice = ""
+    #Message at start.
+    if intro_once:
+        while user_continue_choice not in ["y", "n"]:
+            user_continue_choice = input("Welcome to Las Dolina! \
+Do you want to play Black Jack? (y / n): ").lower()
+        intro_once = False
+
+    #Message after 1st run.
+    else:
+        while user_continue_choice not in ["y", "n"]:
+            user_continue_choice = input("Do you want to play again? (y / n): ").lower()
+
+    if user_continue_choice == "n":
+        break
+
+    #Simulate 1 by 1 dealing (might be useful for future console display)
+    for _ in range(2): 
+        try:
+            drawed_card, decks = draw_cards(1, decks)
+        except: #Repopulate decks
+            decks = create_deck(n_of_decks)
+            drawed_card, decks = draw_cards(1, decks)
+        player_cards.append(drawed_card[0])
+
+        try:
+            drawed_card, decks = draw_cards(1, decks)
+        except: #Repopulate decks
+            decks = create_deck(n_of_decks)
+            drawed_card, decks = draw_cards(1, decks)
+        dealer_cards.append(drawed_card[0])
+        
+
+        
+    
+    #Show player and dealer's card.
+    player_score = hand_score(player_cards)
+    print(f"Your cards are {player_cards}, [{player_score}].")
+    print(f"Dealer")
+    # user_draw_choice = input("Draw a card?")
     
     
     
@@ -142,6 +184,8 @@ print(xx)
     # my_cards, decks = draw_cards(2, decks)
     # dealer_cards, decks = draw_cards(2, decks)
     
+
+
 
 
 
