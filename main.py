@@ -33,7 +33,6 @@ def create_deck(n_decks: int):
 def draw_cards(n: int, decks: list):
     '''Returns a list of n cards, and remaining of the deck inputted.
     '''
-
     drawed_cards = []
     n_decks = len(decks) - 1
     
@@ -44,7 +43,7 @@ def draw_cards(n: int, decks: list):
         is_deck_infinite = False
     
     #Draw n cards and remove from deck.
-    for _ in range(0, n):
+    for _ in range(n):
         #Select random index for choosing deck. 
         #Starts at 1 since 0 is for determining deck is finite or not.
         random_deck_index = random.randint(1, n_decks)
@@ -56,7 +55,7 @@ def draw_cards(n: int, decks: list):
         random_card_index = random.randint(0, deck_size)
 
         if is_deck_infinite:
-            selected_card = random.sample(selected_deck, 1)
+            selected_card = random.sample(selected_deck, 1)[0]
         else:
             selected_card = selected_deck.pop(random_card_index)
             deck_size -= 1
@@ -94,17 +93,14 @@ def hand_score(hand: list):
 continue_playing = True
 
 #Create a deck and deal
-n_of_decks = 2
+n_of_decks = 8
 decks = create_deck(n_of_decks)
 player_cards = []
 dealer_cards = []
 
-
-
 intro_once = True
 
 while continue_playing:
-    # print(f"\n\n{decks}\n\n") #debug
     #Start with new hand.
     player_cards = []
     dealer_cards = []
@@ -141,7 +137,6 @@ Do you want to play Black Jack? (y / n): ").lower()
             drawed_card, decks = draw_cards(1, decks)
         dealer_cards.append(drawed_card[0])
         
-
     user_draw_choice = "y"
     while user_draw_choice == "y":
         user_draw_choice = ""
