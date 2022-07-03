@@ -163,7 +163,7 @@ Do you want to play Black Jack? (y / n): ").lower()
         else:
             dealer_score = hand_score(dealer_cards)
 
-            if dealer_score < 17:
+            while dealer_score < 17:
                 try:
                     drawed_card, decks = draw_cards(1, decks)
                 except: #Repopulate decks
