@@ -82,13 +82,10 @@ def hand_score(hand: list):
             for i, _  in enumerate(hand):
                 if hand[i] == 11:
                     hand[i] = 1
-                    break
-            
-        
+                    break           
             hand_sum = sum(hand)
 
     return sum(hand)
-
 
 continue_playing = True
 
@@ -173,15 +170,16 @@ Do you want to play Black Jack? (y / n): ").lower()
                     decks = create_deck(n_of_decks)
                     drawed_card, decks = draw_cards(1, decks)
                 dealer_cards.append(drawed_card[0])
+                dealer_score = hand_score(dealer_cards)
         
     dealer_score = hand_score(dealer_cards)
-    # player_score = hand_score(player_cards)
+    player_score = hand_score(player_cards)
 
     print(f"You have: {player_cards}. Score: {player_score}.")
     print(f"Dealer has: {dealer_cards}, Score: {dealer_score}.")
     
     #Scoring logic
-    if player_score == dealer_score and player_cards < 22:
+    if player_score == dealer_score and player_score < 22:
         print("It's a draw!")
 
     elif (player_score > dealer_score and player_score <= 21) or dealer_score > 21:
@@ -196,4 +194,4 @@ Do you want to play Black Jack? (y / n): ").lower()
         else:
             print("You lose")
     
-    print("")
+    print("") 
